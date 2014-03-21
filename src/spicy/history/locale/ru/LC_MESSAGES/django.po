@@ -1,0 +1,409 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-21 22:34+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Language: ru_RU\n"
+"X-Source-Language: C\n"
+
+#: admin.py:14
+msgid "History log"
+msgstr "История изменений"
+
+#: admin.py:18 templates/spicy.history/admin/menu.html:15
+msgid "View history log"
+msgstr "Просмотреть историю изменений"
+
+#: defaults.py:11
+msgid "Created object"
+msgstr "Создан объект"
+
+#: defaults.py:12
+msgid "Edited object"
+msgstr "Редактирован объект"
+
+#: defaults.py:13
+msgid "Deleted object"
+msgstr "Удален объект"
+
+#: defaults.py:14
+msgid "Rollback"
+msgstr "Откат"
+
+#: defaults.py:15
+msgid "Renamed object"
+msgstr "Переименован объект"
+
+#: forms.py:11 models.py:13
+msgid "User"
+msgstr "Пользователь"
+
+#: forms.py:13 models.py:17
+msgid "IP address"
+msgstr "Адрес IP"
+
+#: forms.py:14
+msgid "Add * to IP address to match subnetworks, i.e. 127.0.*"
+msgstr "Добавьте * к адресу IP для поиска в подсетях, например 127.0.*"
+
+#: forms.py:16
+msgid "From date"
+msgstr "От даты"
+
+#: forms.py:19
+msgid "To date"
+msgstr "До даты"
+
+#: models.py:11
+msgid "Action type"
+msgstr "Тип действия"
+
+#: models.py:16
+msgid "Rollback to"
+msgstr "Откат до"
+
+#: models.py:19
+msgid "Show in timeline"
+msgstr "Показывать в таймлайне"
+
+#: services.py:89
+msgid "Old version matches current version"
+msgstr "Старая версия совпадает с текущей"
+
+#: services.py:251
+#, python-format
+msgid "Page %s does not exist."
+msgstr "Страница %s не существует."
+
+#: services.py:261
+msgid "History service"
+msgstr "Сервис истории"
+
+#: templates/spicy.history/admin/action.html:3
+msgid "Hystory action"
+msgstr "Действие в истории"
+
+#: templates/spicy.history/admin/diff.html:7
+msgid "First version"
+msgstr "Первая версия"
+
+#: templates/spicy.history/admin/diff.html:8
+msgid "Previous version"
+msgstr "Предыдущая версия"
+
+#: templates/spicy.history/admin/diff.html:9
+#, python-format
+msgid "Version number: %(version)s"
+msgstr "Номер версии: %(version)s"
+
+#: templates/spicy.history/admin/diff.html:10
+msgid "Next version"
+msgstr "Следующая версия"
+
+#: templates/spicy.history/admin/diff.html:11
+msgid "Last version"
+msgstr "Последняя версия"
+
+#: templates/spicy.history/admin/diff.html:14
+msgid "This is last version"
+msgstr "Это последняя версия"
+
+#: templates/spicy.history/admin/diff.html:14
+msgid "Rollback to this version"
+msgstr "Откатиться до этой версии"
+
+#: templates/spicy.history/admin/diff.html:44
+msgid "Preview"
+msgstr "Превью"
+
+#: templates/spicy.history/admin/index.html:3
+#: templates/spicy.history/admin/index.html:4
+msgid "All pages"
+msgstr "Все страницы"
+
+#: templates/spicy.history/admin/index.html:19
+msgid "Search"
+msgstr "Искать"
+
+#: templates/spicy.history/admin/index.html:39
+msgid "URL"
+msgstr "URL"
+
+#: templates/spicy.history/admin/index.html:40
+msgid "Title"
+msgstr "Название"
+
+#: templates/spicy.history/admin/index.html:41
+msgid "Template name"
+msgstr "Название шаблона"
+
+#: templates/spicy.history/admin/index.html:42
+msgid "Sites"
+msgstr "Сайты"
+
+#: templates/spicy.history/admin/index.html:43
+msgid "Is custom"
+msgstr "Отредактировано"
+
+#: templates/spicy.history/admin/index.html:44
+msgid "Enable comments"
+msgstr "Разрешить комментарии"
+
+#: templates/spicy.history/admin/index.html:45
+msgid "Registration required"
+msgstr "Требуется регистрация"
+
+#: templates/spicy.history/admin/index.html:46
+msgid "Make copy"
+msgstr "Сделать копию"
+
+#: templates/spicy.history/admin/index.html:61
+msgid "Custom template"
+msgstr "Пользовательский шаблон"
+
+#: templates/spicy.history/admin/index.html:65
+msgid "No site"
+msgstr "Без сайта"
+
+#: templates/spicy.history/admin/index.html:78
+msgid "Copy page"
+msgstr "Копировать страницу"
+
+#~ msgid "Landing pages"
+#~ msgstr "Лэндинги"
+
+#~ msgid "Create landing page"
+#~ msgstr "Создать лэндинг"
+
+#~ msgid "All landing pages"
+#~ msgstr "Все лэндинги"
+
+#~ msgid " (COPY)"
+#~ msgstr " (КОПИЯ)"
+
+#~ msgid "Error processing form data"
+#~ msgstr "Ошибка обработки данных формы"
+
+#~ msgid "Text input"
+#~ msgstr "Текстовое поле"
+
+#~ msgid "Multiline text area"
+#~ msgstr "Многострочное текстовое поле"
+
+#~ msgid "Phone input"
+#~ msgstr "Телефонный номер"
+
+#~ msgid "Radio buttons"
+#~ msgstr "Радиокнопки"
+
+#~ msgid "Select dropdown"
+#~ msgstr "Выпадающее меню"
+
+#~ msgid "Select dropdown with multiple choices"
+#~ msgstr "Выпадающее меню с множественным выбором"
+
+#~ msgid "Checkboxes"
+#~ msgstr "Чекбоксы"
+
+#~ msgid "Can't save a page without template"
+#~ msgstr "Невозможно сохранить страницу без шаблона"
+
+#~ msgid "Feedback pattern"
+#~ msgstr "Шаблон обратной связи"
+
+#~ msgid "Bound to page"
+#~ msgstr "Привязан к странице"
+
+#~ msgid "Content"
+#~ msgstr "Контент"
+
+#~ msgid "Form title"
+#~ msgstr "Название формы"
+
+#~ msgid "Feedback"
+#~ msgstr "Обратная связь"
+
+#~ msgid "Button text"
+#~ msgstr "Текст кнопки"
+
+#~ msgid "Submit"
+#~ msgstr "Отправить"
+
+#~ msgid "JavaScript code on button click"
+#~ msgstr "Код JavaScript по клику на кнопку"
+
+#~ msgid "Extra code for analytics, etc"
+#~ msgstr "Дополнительный код для аналитики и т.п."
+
+#~ msgid "Template"
+#~ msgstr "Шаблон"
+
+#~ msgid "Field"
+#~ msgstr "Поле"
+
+#~ msgid "Field type"
+#~ msgstr "Тип поля"
+
+#~ msgid "Field title"
+#~ msgstr "Название поля"
+
+#~ msgid "Field help text"
+#~ msgstr "Справка к полю"
+
+#~ msgid "This field can contain optional help text"
+#~ msgstr ""
+#~ "Это поле может содержать необязательный текст со справочной информацией"
+
+#~ msgid "Position"
+#~ msgstr "Позиция"
+
+#~ msgid "Key"
+#~ msgstr "Ключ"
+
+#~ msgid "Value"
+#~ msgstr "Значение"
+
+#~ msgid "Feedback form"
+#~ msgstr "Форма обратной связи"
+
+#~ msgid "Edit"
+#~ msgstr "Редактировать"
+
+#~ msgid "This page uses template:"
+#~ msgstr "Эта страница использут шаблон:"
+
+#~ msgid "You can edit page content manually."
+#~ msgstr "Вы можете редактировать содержимое страницы вручную."
+
+#~ msgid "Disable customization"
+#~ msgstr "Отключить редактирование"
+
+#~ msgid "Enable customization"
+#~ msgstr "Включить редактирование"
+
+#~ msgid "To add new page block, use code like:"
+#~ msgstr "Чтобы добавить новый блок, используйте код вида:"
+
+#~ msgid "Use unique name instead of new-block."
+#~ msgstr "Задайте уникальное имя блока вместо new-block."
+
+#~ msgid "Save changes"
+#~ msgstr "Сохранить изменения"
+
+#~ msgid "Edit SEO attributes manually."
+#~ msgstr "Редактировать СЕО атрибуты вручную."
+
+#~ msgid "To insert block into page use code:"
+#~ msgstr "Для вставки блока в текст страницы используйте код:"
+
+#~ msgid "Сreate a template for the contact form"
+#~ msgstr "Создать шаблон для контактной формы"
+
+#~ msgid "Form settings"
+#~ msgstr "Настройки формы"
+
+#~ msgid "Add form fields"
+#~ msgstr "Добавить поля формы"
+
+#~ msgid "Add"
+#~ msgstr "Добавить"
+
+#~ msgid "Select a template"
+#~ msgstr "Выбор шаблона"
+
+#~ msgid "Submit button"
+#~ msgstr "Кнопка отправки"
+
+#~ msgid ""
+#~ "<strong>There was a problem</strong> with your submission. Please correct "
+#~ "the errors and re-submit."
+#~ msgstr ""
+#~ "<strong>Существует проблема</strong> с вашей формой. Исправьте ошибки и "
+#~ "повторите."
+
+#~ msgid ""
+#~ "<strong>There was a problem</strong> submitting the form. Please try "
+#~ "again in a minute."
+#~ msgstr ""
+#~ "<strong>Существует проблема</strong> с вашей формой. Повторите снова "
+#~ "через минуту."
+
+#~ msgid "Field name"
+#~ msgstr "Название поля"
+
+#~ msgid "Help text"
+#~ msgstr "Справочный текст"
+
+#~ msgid "Optional description displayed to users"
+#~ msgstr "Необязательное описание, показываемое пользователям"
+
+#~ msgid "Success!"
+#~ msgstr "Успешно!"
+
+#~ msgid "Form successfully added"
+#~ msgstr "Форма успешно добавлена"
+
+#~ msgid "Next"
+#~ msgstr "Следующий"
+
+#~ msgid "Back"
+#~ msgstr "Предыдущий"
+
+#~ msgid "Add form"
+#~ msgstr "Добавить форму"
+
+#~ msgid "Add a field"
+#~ msgstr "Добавьте поле"
+
+#~ msgid "Page settings"
+#~ msgstr "Настройки страницы"
+
+#~ msgid "Visual editor"
+#~ msgstr "Визуальный редактор"
+
+#~ msgid "Media files"
+#~ msgstr "Медиа файлы"
+
+#~ msgid "Photo includes"
+#~ msgstr "Вставки фото"
+
+#~ msgid "Editable block"
+#~ msgstr "Редактируемый блок"
+
+#~ msgid "Setting the feedback form"
+#~ msgstr "Настройка формы обратной связи"
+
+#~ msgid "Insert form"
+#~ msgstr "Вставить форму"
+
+#~ msgid "Edit landing"
+#~ msgstr "Редактировать лэндинг"
+
+#~ msgid "Page blocks"
+#~ msgstr "Блоки страницы"
+
+#~ msgid "Edit SEO"
+#~ msgstr "Редактировать СЕО"
+
+#~ msgid "Landing page block example"
+#~ msgstr "Образец блока лэндинг страницы"
+
+#~ msgid "template name"
+#~ msgstr "Название шаблона"
+
+#~ msgid "Error rendering included content"
+#~ msgstr "Ошибка при отображении вставленного контента"

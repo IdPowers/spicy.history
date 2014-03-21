@@ -1,0 +1,46 @@
+{% load sk history %}
+{% load url from future %}
+<div id="diff-{{ diff.pk }}">
+<h4>{{ diff.verbose_field_name }}</h4>
+
+<div>
+{% if diff.version > 1 and diff.first_version %}<a class="nav-link" href="#" data-url="{{ diff.first_version.get_absolute_url }}" title="{% trans "First version" %}">&lt;&lt;</a> {% endif %}
+{% if diff.prev_version %}<a class="nav-link" href="#" data-url="{{ diff.prev_version.get_absolute_url }}" title="{% trans "Previous version" %}">&lt;</a> {% endif %}
+{% blocktrans with diff.version as version %}Version number: {{ version }}{% endblocktrans %}
+{% if diff.next_version %}<a class="nav-link" href="#" data-url="{{ diff.next_version.get_absolute_url }}" title="{% trans "Next version" %}">&gt;</a>{% endif %}
+{% if diff.last_version and diff.last_version.version > diff.version %}<a class="nav-link" href="#" data-url="{{ diff.last_version.get_absolute_url }}" title="{% trans "Last version" %}">&gt;&gt;</a> {% endif %}
+</div>
+
+{% if diff.version == diff.last_version.version %}{% trans "This is last version" %}{% else %}<a id="rollback-{{ diff.id }}" href="#">{% trans "Rollback to this version" %}</a>{% endif %}
+
+{% if perms.history.rollback %}
+<script type="text/javascript">
+$(function() {
+  $('#rollback-{{ diff.id }}').click(function(e){
+    $.post(
+      '{% url 'service:admin:history-rollback' diff.id %}', 
+      function(data) {
+        if (data.status == 'ok')
+          document.location = data.next_url
+      })
+  })
+  
+  $('.nav-link').click(function(){
+    var div = $(this).parent().parent()
+    $.get(
+      $(this).attr('data-url'),
+      function(data){
+        div.replaceWith(data)
+      })
+  })
+})
+</script>
+{% endif %}
+
+<pre>
+{{ diff.change|colorize_diff|linenumbers }}
+</pre>
+
+<h4>{% trans "Preview" %}</h4>
+{{ diff.get_version_text|safe }}
+</div>

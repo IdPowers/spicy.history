@@ -1,0 +1,28 @@
+{% extends current_admin_base %}{% load spicy_admin sk navigator %}{% load url from future %}
+
+{% block title %}{% trans "Hystory action" %} {{ form.instance.get_absolute_url }}{% endblock %}
+{% block status_title %}<i class="icon-pencil"></i> {{ action }}{% endblock status_title %}
+
+{% block status_stats %}
+<a class="pull-right" href="{{ form.instance.get_absolute_url }}" target="_blank"><i class="icon-eye-open icon-2x"></i></a>
+{% endblock status_stats %}
+
+{% block content %}
+<div class="container-fluid hpadded">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="box">
+        <div class="box-content">
+	  <ul class="padded separate-sections">
+	    {% for diff in action.diff_set.all %}
+	    <li>
+	      {% include "spicy.history/admin/diff.html" %}
+	    </li>
+	    {% endfor %}
+	  </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

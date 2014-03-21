@@ -1,0 +1,21 @@
+{% load url from future %}
+{% if perms.landing %}
+<li class="dark-nav{% if '/admin/landing/' in request.path %} active{% endif %}">
+  <span class="glow"></span>
+  <a class="accordion-toggle collapsed" data-toggle="collapse" href="#menu_{{ app.name }}">
+    <i class="icon-book icon-2x"></i>
+    <span>{{ app.label }}
+      <i class="icon-caret-down"></i>
+    </span>
+  </a>
+
+  <ul id="menu_{{ app.name }}" class="collapse{% if '/admin/history/' in request.path %} in{% endif %}">
+    <li>
+      <a href="{% url 'history:admin:index' %}">
+        <i class="icon-list-alt"></i> {% trans "View history log" %}
+      </a>
+    </li>
+
+  </ul>
+</li>
+{% endif %}
