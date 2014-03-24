@@ -14,7 +14,9 @@ class ActionsFilterForm(forms.Form):
         help_text=_('Add * to IP address to match subnetworks, i.e. 127.0.*'))
     filter_from = forms.DateTimeField(
         label=_('From date'),
-        widget=forms.DateTimeInput(format='%Y-%m-%d %H:%M'))
+        widget=forms.DateTimeInput(
+            attrs={'class': 'datetime fill-up'}, format='%Y-%m-%d %H:%M'))
     filter_to = forms.DateTimeField(
         label=_('To date'),
-        widget=forms.DateTimeInput(format='%Y-%m-%d %H:%M'))
+        widget=forms.DateTimeInput(
+            attrs={'class': 'datetime fill-up'}, format='%Y-%m-%d %H:%M'))

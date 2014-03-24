@@ -52,7 +52,7 @@ def actions_list(request):
 
     paginator = nav.get_queryset_with_paginator(
         models.Action, reverse('history:admin:index'),
-        search_query=search_query,
+        search_query=([search_query], {}),
         obj_per_page=admin_defaults.ADMIN_OBJECTS_PER_PAGE
         )
 

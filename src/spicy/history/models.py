@@ -115,6 +115,10 @@ class Diff(models.Model):
     def get_absolute_url(self):
         return 'history:admin:diff', (self.id,),
 
+    def __unicode__(self):
+        return u'{name}@{version}'.format(
+            name=self.verbose_field_name(), version=self.version)
+
     class Meta:
         db_table = 'hs_diff'
         permissions = (
@@ -126,5 +130,3 @@ class Diff(models.Model):
 
 models.signals.post_save.connect(listeners.object_post_save)
 models.signals.pre_delete.connect(listeners.object_pre_delete)
-
-

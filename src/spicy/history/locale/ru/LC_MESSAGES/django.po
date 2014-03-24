@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-21 22:34+0400\n"
+"POT-Creation-Date: 2014-03-24 19:39+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: admin.py:14
 msgid "History log"
-msgstr "История изменений"
+msgstr "История правок"
 
 #: admin.py:18 templates/spicy.history/admin/menu.html:15
 msgid "View history log"
@@ -52,7 +52,8 @@ msgstr "Переименован объект"
 msgid "User"
 msgstr "Пользователь"
 
-#: forms.py:13 models.py:17
+#: forms.py:13 models.py:17 templates/spicy.history/admin/actions.html:13
+#: templates/spicy.history/admin/list.html:57
 msgid "IP address"
 msgstr "Адрес IP"
 
@@ -64,7 +65,7 @@ msgstr "Добавьте * к адресу IP для поиска в подсе�
 msgid "From date"
 msgstr "От даты"
 
-#: forms.py:19
+#: forms.py:20
 msgid "To date"
 msgstr "До даты"
 
@@ -84,18 +85,38 @@ msgstr "Показывать в таймлайне"
 msgid "Old version matches current version"
 msgstr "Старая версия совпадает с текущей"
 
-#: services.py:251
+#: services.py:248
 #, python-format
 msgid "Page %s does not exist."
 msgstr "Страница %s не существует."
 
-#: services.py:261
+#: services.py:258
 msgid "History service"
 msgstr "Сервис истории"
 
 #: templates/spicy.history/admin/action.html:3
 msgid "Hystory action"
 msgstr "Действие в истории"
+
+#: templates/spicy.history/admin/actions.html:10
+#: templates/spicy.history/admin/list.html:54
+msgid "Date"
+msgstr "Дата"
+
+#: templates/spicy.history/admin/actions.html:11
+#: templates/spicy.history/admin/list.html:55
+msgid "Action"
+msgstr "Действие"
+
+#: templates/spicy.history/admin/actions.html:12
+#: templates/spicy.history/admin/list.html:56
+msgid "Editor"
+msgstr "Редактор"
+
+#: templates/spicy.history/admin/actions.html:14
+#: templates/spicy.history/admin/list.html:58
+msgid "Modified fields"
+msgstr "Измененные поля"
 
 #: templates/spicy.history/admin/diff.html:7
 msgid "First version"
@@ -130,58 +151,51 @@ msgstr "Откатиться до этой версии"
 msgid "Preview"
 msgstr "Превью"
 
-#: templates/spicy.history/admin/index.html:3
-#: templates/spicy.history/admin/index.html:4
+#: templates/spicy.history/admin/list.html:5
+#: templates/spicy.history/admin/list.html:6
 msgid "All pages"
 msgstr "Все страницы"
 
-#: templates/spicy.history/admin/index.html:19
+#: templates/spicy.history/admin/list.html:34
 msgid "Search"
 msgstr "Искать"
 
-#: templates/spicy.history/admin/index.html:39
-msgid "URL"
-msgstr "URL"
+#: templates/spicy.history/admin/list.html:35
+msgid "Show all"
+msgstr "Показать все"
 
-#: templates/spicy.history/admin/index.html:40
-msgid "Title"
-msgstr "Название"
+#~ msgid "URL"
+#~ msgstr "URL"
 
-#: templates/spicy.history/admin/index.html:41
-msgid "Template name"
-msgstr "Название шаблона"
+#~ msgid "Title"
+#~ msgstr "Название"
 
-#: templates/spicy.history/admin/index.html:42
-msgid "Sites"
-msgstr "Сайты"
+#~ msgid "Template name"
+#~ msgstr "Название шаблона"
 
-#: templates/spicy.history/admin/index.html:43
-msgid "Is custom"
-msgstr "Отредактировано"
+#~ msgid "Sites"
+#~ msgstr "Сайты"
 
-#: templates/spicy.history/admin/index.html:44
-msgid "Enable comments"
-msgstr "Разрешить комментарии"
+#~ msgid "Is custom"
+#~ msgstr "Отредактировано"
 
-#: templates/spicy.history/admin/index.html:45
-msgid "Registration required"
-msgstr "Требуется регистрация"
+#~ msgid "Enable comments"
+#~ msgstr "Разрешить комментарии"
 
-#: templates/spicy.history/admin/index.html:46
-msgid "Make copy"
-msgstr "Сделать копию"
+#~ msgid "Registration required"
+#~ msgstr "Требуется регистрация"
 
-#: templates/spicy.history/admin/index.html:61
-msgid "Custom template"
-msgstr "Пользовательский шаблон"
+#~ msgid "Make copy"
+#~ msgstr "Сделать копию"
 
-#: templates/spicy.history/admin/index.html:65
-msgid "No site"
-msgstr "Без сайта"
+#~ msgid "Custom template"
+#~ msgstr "Пользовательский шаблон"
 
-#: templates/spicy.history/admin/index.html:78
-msgid "Copy page"
-msgstr "Копировать страницу"
+#~ msgid "No site"
+#~ msgstr "Без сайта"
+
+#~ msgid "Copy page"
+#~ msgstr "Копировать страницу"
 
 #~ msgid "Landing pages"
 #~ msgstr "Лэндинги"
@@ -280,9 +294,6 @@ msgstr "Копировать страницу"
 #~ msgid "Feedback form"
 #~ msgstr "Форма обратной связи"
 
-#~ msgid "Edit"
-#~ msgstr "Редактировать"
-
 #~ msgid "This page uses template:"
 #~ msgstr "Эта страница использут шаблон:"
 
@@ -365,9 +376,6 @@ msgstr "Копировать страницу"
 
 #~ msgid "Add form"
 #~ msgstr "Добавить форму"
-
-#~ msgid "Add a field"
-#~ msgstr "Добавьте поле"
 
 #~ msgid "Page settings"
 #~ msgstr "Настройки страницы"

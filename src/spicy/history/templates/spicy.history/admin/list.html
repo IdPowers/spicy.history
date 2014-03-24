@@ -1,0 +1,103 @@
+{% extends current_admin_base %}
+{% load navigator pagination %}
+{% load url from future %}
+
+{% block title %}{% trans "All pages" %}{% endblock %}
+{% block status_title %}<i class="icon-user"></i> {% trans "All pages" %}{% endblock status_title %}
+
+{% block content %}
+
+<div class="container-fluid padded">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="box">
+
+	<div class="box-content">
+	  <div class="padded row-fluid">
+            <form class="fill-up">
+	      <div class="padded separate-sections">
+		<div class="span3">
+		  {{ form.profile }}
+		</div>
+		<div class="span2">
+		  {{ form.ip }}
+		  <div class="note pull-right">{{ form.ip.help_text }}</div>
+		</div>
+		<div class="span2 input">
+		  {{ form.filter_from }}
+		</div>
+		<div class="span2">
+		  {{ form.filter_to }}
+		</div>
+		
+		<div class="span2">
+		  <button type="submit" class="btn btn-blue">{% trans 'Search' %}</button>
+		  <a href=".">{% trans "Show all" %}</a>
+		</div>
+	      </div>
+            </form>
+            <div class="hpadded">
+              <div class="pagination pagination-small" style="margin-top: 5px">
+		{% pagination %}
+              </div>
+            </div>
+	  </div>
+	</div>
+
+{% if objects_list.count > 0 %}
+
+	<div class="table table-normal">
+	  <form class="form form-inline">
+	    <table class="table table-normal" style="border-top: 1px solid #CDCDCD;">
+	      <thead>
+		<tr role="row">
+		  <td>{% nav_order_url nav 'date_joined' _('Date') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
+		  <td>{% nav_order_url nav 'date_joined' _('Action') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
+		  <td>{% nav_order_url nav 'profile' _('Editor') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
+		  <td>{% nav_order_url nav 'ip' _('IP address') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
+		  <td>{% nav_order_url nav 'action' _('Modified fields') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
+		</tr>
+	      </thead>
+	    
+	      <tbody>
+		{% for action in objects_list %}
+		<tr class="{% cycle 'odd' 'even' %}">
+		  <td>{{ action.date_joined|date:"h.m.y H:i:s" }}</td>
+		  <td>
+		    <a href="{% url 'history:admin:action' action.id %}"><i class="icon-eye-open"></i> {{ action }}</a>
+		  </td>
+		  <td><a href="{% url 'history:admin:index' %}?profile={{ action.profile_id }}">{{ action.profile }}</a></td>
+		  <td><a href="{% url 'history:admin:index' %}?ip={{ action.ip }}">{{ action.ip }}</a></td>
+		  <td>
+		    <ul>
+		      {% for diff in action.diff_set.all %}
+		      <li>
+			{{ diff }}
+		      </li>
+		      {% endfor %}
+		    </ul>
+		  </td>
+		</tr>
+		{% endfor %}
+	      </tbody>
+	    </table>
+	  </form>
+
+	  <div class="table-footer">
+	    <div class="hpadded" style="margin-top: 5px;">
+	      <div class="pagination pagination-small" style="margin-top: 0">
+		{% pagination %}
+	      </div>
+	    </div>
+	  </div>
+
+	</div>
+{% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+	
+
+{% endblock %}

@@ -10,10 +10,10 @@ from django.template import Context
 from django.template.loader import get_template
 from django.utils.translation import ugettext_lazy as _
 from functools import reduce
+from spicy.core.admin import defaults as admin_defaults
 from spicy.core.profile.decorators import is_staff
 from spicy.core.service import api
-from spicy.core.siteskin import defaults as sk_defaults
-from spicy.core.siteskin.decorators import ajax_request, render_to, multi_view
+from spicy.core.siteskin.decorators import ajax_request, render_to
 from spicy.utils import NavigationFilter
 from . import models, defaults, utils
 
@@ -37,7 +37,7 @@ class HistoryProvider(api.Provider):
         paginator_base_url = '.'
         paginator = nav.get_queryset_with_paginator(
             self.model, paginator_base_url,
-            obj_per_page=sk_defaults.OBJECTS_PER_PAGE,
+            obj_per_page=admin_defaults.ADMIN_OBJECTS_PER_PAGE,
             search_query=search_query)
         objects_list = paginator.current_page.object_list
 
@@ -124,7 +124,7 @@ class HistoryProvider(api.Provider):
                 Count('action')
             ).order_by('-action__count')[:defaults.AUTHORS_TOP_LIMIT]}
 
-    @multi_view(is_public=True, use_cache=True)
+    @render_to('actions.html', use_admin=True)
     def __call__(self, request, consumer_type, consumer_id):
         ctype = ContentType.objects.get(model=consumer_type)
         consumer_model = ctype.model_class()
@@ -139,11 +139,8 @@ class HistoryProvider(api.Provider):
 
         editors = api.register['profile'].get_profiles(id__in=ids)
 
-        template = 'history/admin/action_details.html'
-
         return {
-            'editors': editors,
-            'template': template, 'consumer_type': consumer_type,
+            'editors': editors, 'consumer_type': consumer_type,
             'consumer_id': consumer_id,
             'objects_list': objects_list,
             'consumer': consumer, 'consumer_type_id': ctype.id,

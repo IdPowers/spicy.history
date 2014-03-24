@@ -1,0 +1,43 @@
+{% load url from future %}
+<div class="container-fluid padded">
+
+{% if objects_list %}  
+<div class="box">
+  <div class="box-content">
+    <table class="table table-normal">    
+      <thead>
+	<tr role="row">
+	  <td>{% nav_order_url nav 'date_joined' _('Date') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
+	  <td>{% nav_order_url nav 'date_joined' _('Action') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
+	  <td>{% nav_order_url nav 'profile' _('Editor') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
+	  <td>{% nav_order_url nav 'ip' _('IP address') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
+	  <td>{% nav_order_url nav 'action' _('Modified fields') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
+	</tr>
+      </thead>
+      <tbody>
+	{% for action in objects_list %}
+	<tr>
+	  <td>{{ action.date_joined|date:"h.m.y H:i:s" }}</td>
+	  <td>
+	    <a href="{% url 'history:admin:action' action.id %}"><i class="icon-eye-open"></i> {{ action }}</a>
+	  </td>
+	  <td><a href="{% url 'history:admin:index' %}?profile={{ action.profile_id }}">{{ action.profile }}</a></td>
+	  <td><a href="{% url 'history:admin:index' %}?ip={{ action.ip }}">{{ action.ip }}</a></td>
+	  <td>
+	    <ul>
+	      {% for diff in action.diff_set.all %}
+	      <li>
+		{{ diff }}
+	      </li>
+	      {% endfor %}
+	    </ul>
+	  </td>
+	</tr>
+	{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+
+</div>
