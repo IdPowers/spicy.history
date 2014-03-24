@@ -1,3 +1,4 @@
+{% load navigator %}
 {% load url from future %}
 <div class="container-fluid padded">
 
@@ -7,11 +8,11 @@
     <table class="table table-normal">    
       <thead>
 	<tr role="row">
-	  <td>{% nav_order_url nav 'date_joined' _('Date') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
-	  <td>{% nav_order_url nav 'date_joined' _('Action') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
-	  <td>{% nav_order_url nav 'profile' _('Editor') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
-	  <td>{% nav_order_url nav 'ip' _('IP address') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
-	  <td>{% nav_order_url nav 'action' _('Modified fields') "icon-sort" "icon-sort-down" "icon-sort-up" %}</td>
+	  <td>{% trans "Date" %}</td>
+	  <td>{% trans "Action" %}</td>
+	  <td>{% trans "Editor" %}</td>
+	  <td>{% trans "IP address" %}</td>
+	  <td>{% trans "Modified fields" %}</td>
 	</tr>
       </thead>
       <tbody>
