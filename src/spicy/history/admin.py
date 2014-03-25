@@ -12,7 +12,7 @@ from . import forms, models
 class AdminApp(AdminAppBase):
     name = 'history'
     label = _('History log')
-    order_number = 100
+    order_number = 110
 
     menu_items = (
         AdminLink('history:admin:index', _('View history log')),
