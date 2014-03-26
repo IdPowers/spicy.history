@@ -56,7 +56,7 @@ def object_post_save(sender, **kwargs):
     if fields:
         consumer_name = unicode(provider.consumer).encode('utf-8')
 
-    diff = None
+    has_diff = False
             
     for field in fields:
         last_version = api.register['history'].get_last_version(
@@ -91,6 +91,11 @@ def object_post_save(sender, **kwargs):
                 consumer_name, consumer_name, last_date,
                 str(provider.date_joined), lineterm=''))
 
+            if patch:
+                has_diff = True
+            else:
+                continue
+
             new_version = last_version + 1
             diff = models.Diff.objects.create(
                 action=provider, version=new_version, field=field,
@@ -102,7 +107,7 @@ def object_post_save(sender, **kwargs):
                 action__consumer_id=instance.pk, field=field,
                 version=new_version)
             diff.get_version_text()
-    if not diff:
+    if not has_diff:
         provider.delete()
 
 
