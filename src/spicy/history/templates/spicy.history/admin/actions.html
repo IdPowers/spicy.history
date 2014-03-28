@@ -18,7 +18,7 @@
       <tbody>
 	{% for action in objects_list %}
 	<tr>
-	  <td>{{ action.date_joined|date:"h.m.y H:i:s" }}</td>
+	  <td>{{ action.date_joined|date:"d.m.y H:i:s" }}</td>
 	  <td>
 	    <a href="{% url 'history:admin:action' action.id %}"><i class="icon-eye-open"></i> {{ action }}</a>
 	  </td>
