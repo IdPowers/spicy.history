@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-24 19:39+0400\n"
+"POT-Creation-Date: 2014-03-28 22:04+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,32 +28,40 @@ msgstr "История правок"
 msgid "View history log"
 msgstr "Просмотреть историю изменений"
 
-#: defaults.py:11
+#: defaults.py:13
 msgid "Created object"
 msgstr "Создан объект"
 
-#: defaults.py:12
+#: defaults.py:14
 msgid "Edited object"
 msgstr "Редактирован объект"
 
-#: defaults.py:13
+#: defaults.py:15
 msgid "Deleted object"
 msgstr "Удален объект"
 
-#: defaults.py:14
+#: defaults.py:16
 msgid "Rollback"
 msgstr "Откат"
 
-#: defaults.py:15
+#: defaults.py:17
 msgid "Renamed object"
 msgstr "Переименован объект"
+
+#: defaults.py:18
+msgid "Moved to trash"
+msgstr "Перемещен в корзину"
+
+#: defaults.py:19
+msgid "Restored from trash"
+msgstr "Восстановлен из корзины"
 
 #: forms.py:11 models.py:13
 msgid "User"
 msgstr "Пользователь"
 
-#: forms.py:13 models.py:17 templates/spicy.history/admin/actions.html:13
-#: templates/spicy.history/admin/list.html:57
+#: forms.py:13 models.py:17 templates/spicy.history/admin/actions.html:14
+#: templates/spicy.history/admin/list.html:59
 msgid "IP address"
 msgstr "Адрес IP"
 
@@ -98,23 +106,23 @@ msgstr "Сервис истории"
 msgid "Hystory action"
 msgstr "Действие в истории"
 
-#: templates/spicy.history/admin/actions.html:10
-#: templates/spicy.history/admin/list.html:54
+#: templates/spicy.history/admin/actions.html:11
+#: templates/spicy.history/admin/list.html:56
 msgid "Date"
 msgstr "Дата"
 
-#: templates/spicy.history/admin/actions.html:11
-#: templates/spicy.history/admin/list.html:55
+#: templates/spicy.history/admin/actions.html:12
+#: templates/spicy.history/admin/list.html:57
 msgid "Action"
 msgstr "Действие"
 
-#: templates/spicy.history/admin/actions.html:12
-#: templates/spicy.history/admin/list.html:56
+#: templates/spicy.history/admin/actions.html:13
+#: templates/spicy.history/admin/list.html:58
 msgid "Editor"
 msgstr "Редактор"
 
-#: templates/spicy.history/admin/actions.html:14
-#: templates/spicy.history/admin/list.html:58
+#: templates/spicy.history/admin/actions.html:15
+#: templates/spicy.history/admin/list.html:60
 msgid "Modified fields"
 msgstr "Измененные поля"
 

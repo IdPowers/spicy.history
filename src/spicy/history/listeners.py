@@ -15,10 +15,13 @@ def object_post_save(sender, **kwargs):
     instance = kwargs.get('instance')
 
     consumer_type = ContentType.objects.get_for_model(sender)
-    action_type = getattr(
-        instance, '_action_type',
-        defaults.ACTION_CREATE if kwargs.get('created') else
-        defaults.ACTION_EDIT)
+    try:
+        action_type = instance._action_type
+        delattr(instance, '_action_type')
+    except AttributeError:
+        action_type = (
+            defaults.ACTION_CREATE if kwargs.get('created') else
+            defaults.ACTION_EDIT)
 
     if action_type == defaults.ACTION_ROLLBACK:
         return
@@ -107,7 +110,7 @@ def object_post_save(sender, **kwargs):
                 action__consumer_id=instance.pk, field=field,
                 version=new_version)
             diff.get_version_text()
-    if not has_diff:
+    if not has_diff and action_type == defaults.ACTION_EDIT:
         provider.delete()
 
 

@@ -4,8 +4,10 @@ from django.utils.translation import ugettext_lazy as _
 from .utils import observe
 
 
-ACTION_CREATE, ACTION_EDIT, ACTION_DELETE, ACTION_ROLLBACK, ACTION_RENAME = \
-    range(5)
+(
+    ACTION_CREATE, ACTION_EDIT, ACTION_DELETE, ACTION_ROLLBACK,
+    ACTION_RENAME, ACTION_TRASH, ACTION_RESTORE
+) = range(7)
 
 ACTION_TYPES = (
     (ACTION_CREATE, _('Created object')),
@@ -13,6 +15,8 @@ ACTION_TYPES = (
     (ACTION_DELETE, _('Deleted object')),
     (ACTION_ROLLBACK, _('Rollback')),
     (ACTION_RENAME, _('Renamed object')),
+    (ACTION_TRASH, _('Moved to trash')),
+    (ACTION_RESTORE, _('Restored from trash')),
 )
 
 OBSERVED_FIELDS = getattr(
