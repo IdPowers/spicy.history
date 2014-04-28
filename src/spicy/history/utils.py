@@ -1,9 +1,10 @@
 import datetime
 import re
-from django.db.models import Q
+from django.db.models import Model, Q
 
 
 HUNK_RE = '@@ \-(\d+)(,(\d+))? \+(\d+)(,(\d+))? @@'
+
 
 def merge(diffs):
     """
@@ -119,7 +120,7 @@ def merge(diffs):
     ... '-<p>12323arsar</p>\\n'
     ... '-<p>arsars</p>'])
     u'<p>qqZZZ</p>'
-    """    
+    """
     hunk_re = re.compile(HUNK_RE)
     text = []
     for diff in diffs:
@@ -131,9 +132,9 @@ def merge(diffs):
                 line = lines.next()
                 if line.startswith('--- '):
                     lines.next()
-                    line = lines.next()                    
+                    line = lines.next()
 
-                # Parse hunk info.                
+                # Parse hunk info.
                 match = hunk_re.match(line)
                 if match is None:
                     continue
@@ -163,8 +164,8 @@ def merge(diffs):
                         # Line removed.
                         # XXX
                         assert text[start_old] == line[1:],\
-                               "Deleted text didn't match: %s\n%s" % (
-                            unicode(text), line)
+                            "Deleted text didn't match: %s\n%s" % (
+                                unicode(text), line)
                         del text_new[start_new]
                         start_old += 1
                         pass
@@ -178,8 +179,8 @@ def merge(diffs):
                         # Line unchanged.
                         line = line[1:]
                         assert text[start_old] == text_new[start_new] == line,\
-                               "Text shouldn't change here: %s\n%s" % (
-                            diff, unicode((text[start_old], line, text)))
+                            "Text shouldn't change here: %s\n%s" % (
+                                diff, unicode((text[start_old], line, text)))
                         start_old += 1
                         start_new += 1
             except StopIteration:
@@ -223,13 +224,16 @@ def to_unicode(value):
     """
     if callable(value):
         value = value()
-        
+
     if isinstance(value, unicode):
         return value
     elif isinstance(value, datetime.datetime):
         return unicode(value.strftime('%d/%m/%Y %H:%M'))
     elif isinstance(value, str):
         return value.decode('utf-8')
+    elif isinstance(value, Model):
+        return u'{value.pk} ({uvalue})'.format(
+            value=value, uvalue=unicode(value))
     else:
         return unicode(value)
 
@@ -272,6 +276,8 @@ def from_unicode(value, to_type):
         return int(value)
     elif issubclass(to_type, datetime.datetime):
         return datetime.datetime.strptime(value, '%d/%m/%Y %H:%M')
+    elif issubclass(to_type, Model):
+        return to_type.objects.get(pk=value.split(' ', 1)[0])
     else:
         raise NotImplementedError
 

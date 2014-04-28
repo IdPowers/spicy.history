@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, InvalidPage
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q, Count
+from django.db.models.fields import related
 from django.http import Http404
 from django.template import Context
 from django.template.loader import get_template
@@ -103,10 +104,14 @@ class HistoryProvider(api.Provider):
         if model_field:
             if callable(model_field):
                 raise ValueError("Unable to convert to a function")
+            elif isinstance(
+                    model_field, related.ReverseSingleRelatedObjectDescriptor):
+                to_type = model_field.field.rel.to
             else:
                 to_type = unicode
         else:
             to_type = getattr(action.consumer, diff.field).__class__
+
         setattr(
             action.consumer, field, utils.from_unicode(new_value, to_type))
         action.consumer._action_type = defaults.ACTION_ROLLBACK
