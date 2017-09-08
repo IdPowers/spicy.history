@@ -97,12 +97,38 @@ def your_view(request):
 #### Методы провайдера spicy.history
 Кроме использования провайдера в ваших обработчиках через ``api.register['history']``, вы можете обращаться к ним напрямую по URL.
 
-* Доступ к методу вы можете получить из шаблона, используя ``{% url 'service:public:history-list' 'document' doc.pk as history_url %}`` - так в контекст шаблона будет добавлена переменная ``history_url`` - путь к методу провайдера, который возвращает шаблон со списком изменений для указанного объекта (в этом примере тип объекта ``Document``, с ``pk=doc.pk``) services/list.html. Внутри этого шаблона доступны переменные.
+* ``HistoryProvider.list(request, consumer_type, consumer_id)`` - список изменений указанного объекта.<br>
+Доступ к методу вы можете получить из шаблона, используя ``{% url 'service:public:history-list' 'document' doc.pk as history_url %}`` - так в контекст шаблона будет добавлена переменная ``history_url`` - путь к методу (в этом примере тип объекта ``Document``, с ``pk=doc.pk``). Метод возвращает шаблон services/list.html, в его контексте доступны переменные ``nav``, ``objects_list``, ``paginator``, ``consumer``, ``consumer_type_id``, ``fields`` (описание переменных смотри [ниже]()).
 
-{TODO как получить доступ к сервису через api.reg[hist], методы провайдера, по каким урлам к ним обращаться из шаблонов}
+* ``HistoryProvider.list_by_field(request, consumer_type, consumer_id, field)`` - список изменений указанного объекта по заданному полю.<br>
+Доступ к методу вы можете получить из шаблона, используя ``{% url 'service:public:history-list_by_field' 'document' doc.pk 'is_public' as history_url %}``, переменная контекста history_url будет содержать URL для обращения к нему. В этом примере будет сгенерирован URL для получения списка изменений поля ``is_public`` объекта типа ``Document`` с id, равным ``doc.pk``. Метод возвращает шаблон services/list.html, в нем доступны переменные ``prov`` и ``consumer``, описание [ниже]().
+
+* ``HistoryProvider.rollback(request, diff_id)`` - откат изменений к указанной версии (объекту ``Diff``).<br>
+Получить URL из шаблона можно с помощью ``{% url 'service:public:history-rollback' diff.pk as rollback_url %}``. Этот метод возвращает AJAX ответ, содержащий поля ``status``, ``message`` и ``next_url``, описание переменных [ниже]().
+
+* ``HistoryProvider.authors_top(request)`` - выводить список наиболее часто изменяющих объекты пользователей.<br>
+Из шаблона получите URL с помощь ``{% url 'service:public:history-authors_top' as authors_url %}``. Метод возвращает шаблон history/authors_top.html, в котором доступна переменная ``authors``.
+
+* ``HistoryProvider.timeline(request, consumer_types, root)`` - вывод временной линии изменений для объектов определенного типа. <br>
+Для получения URL'а в шаблоне, используйте ``{% url 'service:public:history-timeline' document, profile history_url %}`` - в данном примере будет сгенерирован список изменений для объектов типа ``Document`` и ``Profile``. Метод возвращает шаблон spicy.history/rubric_timeline.html, в котором доступны переменные ``paginator``, ``consumer_types`` и ``root``. 
+
+В spicy.history есть шаблоны, которые используются по умолчанию, для отображения результатов этих методов. Вы можете переопределить их или дополнить. Подробнее про переопределение дефолтных шаблонов читайте в [документации spicy.core.siteskin](https://github.com/spicycms/spicy.core/blob/develop/docs/siteskin/README.rst#Переопределяем-шаблон-модуля-spicycms). 
+
 
 #### Список переменных шаблонов spicy.history
-{TODO переменные которые передаются в шаблоны методов провайдера} 
+
+* nav - объект [NavigationFilter]https://github.com/spicycms/spicy.core/blob/8436b2677448cc1cd398fc37d4330edfb8f5170a/src/spicy/utils/filters.py#L12), реализует фильтрацию списка объектов по условиям и ограничения из GET-запроса
+* objects_list - список объектов, на текущей странице пажинатора
+* paginator - объект пажинатора
+* consumer - объект указанного типа, для которого будет получена история именений
+* consumer_type_id - id ContentType для объекта
+* fields - поля, по которым возвращается списк изменений
+* prov - провайдер сервиса истории измений
+* status - статус обработки AJAX запроса
+* message - сообщение после обработки AJAX запроса. Успех либо неудача
+* next_url - URL для редиректа после успешного исполнения AJAX запроса
+* authors - спискок авторов, которые наиболее часто вносят изменения в отслеживаемые объекты
+* root - используется для истории изменений объектов Xtag модуля [spicy.xtag](https://gitlab.com/spicycms.com/spicy.xtag#spicyxtag), позволяет указать, начиная с какого родительского тега, рассматривать объекты тегов
 
 ### Refactoring
 Не используются:
