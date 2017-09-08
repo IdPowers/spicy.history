@@ -58,7 +58,7 @@ OBSERVED_FIELDS = {
 Ниже приведены детали реализации spicy.history с описанием моделей и методов сервиса.
 
 ### Модели spicy.history
-Модуль использует 2 основные модели - ``Action`` и ``Diff``. ``Action`` хранит информацию о том, кем, когда и какой [тип изменения](https://github.com/spicycms/spicy.history/blob/develop/src/spicy/history/defaults.py#L22) был сделан для определенного объекта. Модель ``Diff`` хранит данные о том, какое поле было изменено, новое значение и версию.
+Модуль использует 2 основные модели - ``Action`` и ``Diff``. ``Action`` хранит информацию о том, кем, когда и какой [тип изменения](https://github.com/spicycms/spicy.history/blob/develop/src/spicy/history/defaults.py#L12) был сделан для определенного объекта. Модель ``Diff`` хранит данные о том, какое поле было изменено, новое значение и версию.
 
 Эти модели имеют методы и свойства:
 
@@ -82,7 +82,7 @@ OBSERVED_FIELDS = {
 
 
 ### Сервис spicy.history
-Кроме моделей, spicy.history также предоставляет сервис ``HistoryService``, который дает доступ к провайдеру с [полезными методами](https://github.com/spicycms/spicy.history/blob/develop/src/spicy/history/services.py#L22) для истории изменений, которые вы можете использовать в ваших обработчиках:
+Кроме моделей, spicy.history также предоставляет сервис ``HistoryService``, который дает доступ к провайдеру с [полезными методами](./README.md#Методы-провайдера-spicyhistory) для истории изменений, которые вы можете использовать в ваших обработчиках:
 
 ```
 from spicy.core.service import api
