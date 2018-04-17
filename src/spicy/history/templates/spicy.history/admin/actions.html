@@ -27,9 +27,7 @@
 	  <td>
 	    <ul>
 	      {% for diff in action.diff_set.all %}
-	      <li>
-		{{ diff }}
-	      </li>
+	      <li>{{ diff.verbose_field_name }}</li>
 	      {% endfor %}
 	    </ul>
 	  </td>

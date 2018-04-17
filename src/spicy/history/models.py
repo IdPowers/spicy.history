@@ -108,8 +108,10 @@ class Diff(models.Model):
                 getattr(
                     getattr(model, self.field, None), 'fget', None),
                 'verbose_name', None)
-            return unicode(name or model._meta.get_field_by_name(
-                self.field)[0].verbose_name)
+            if not name:
+                return unicode(model._meta.get_field_by_name(
+                    self.field)[0].verbose_name.decode('utf-8'))
+            return unicode(name.decode('utf-8'))
 
     @models.permalink
     def get_absolute_url(self):
